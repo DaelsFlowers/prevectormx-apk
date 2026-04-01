@@ -51,7 +51,6 @@ function App() {
 
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHoveringImage, setIsHoveringImage] = useState(false);
   const imageRef = useRef(null);
 
@@ -71,22 +70,8 @@ function App() {
     };
   }, [textSlides.length, imageSlides.length]);
 
-  // Animación de mouse para fondo
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 100,
-        y: (e.clientY / window.innerHeight) * 100
-      });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   return (
     <div className="App">
-      
-
       {/* Contenido principal */}
       <div className="content">
         {/* Header con logo y nombre */}
@@ -163,8 +148,7 @@ function App() {
               </button>
             </div>
             
-
-            {/* Nuevo botón "Visita nuestra página" */}
+            {/* Botón "Visita nuestra página" */}
             <div className="visit-button-container">
               <button className="visit-btn" onClick={() => window.open('https://prevectormx.com', '_blank')}>
                 <svg className="visit-icon" viewBox="0 0 24 24" fill="currentColor">

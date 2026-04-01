@@ -7,112 +7,9 @@
 .App {
   position: relative;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: hidden; /* Evita scroll horizontal global */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-  background-color: #67c1d8;
-}
-
-/* Fondo animado mejorado con más movimiento */
-.animated-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  overflow: hidden;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-}
-
-.gradient-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transition: background 0.3s ease;
-}
-
-.sphere {
-  position: absolute;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(37, 99, 235, 0.15) 100%);
-  border-radius: 50%;
-  animation: float-slow 15s ease-in-out infinite;
-  pointer-events: none;
-  filter: blur(25px);
-}
-
-@keyframes float-slow {
-  0%, 100% {
-    transform: translateY(0px) translateX(0px) scale(1);
-  }
-  25% {
-    transform: translateY(-40px) translateX(30px) scale(1.1);
-  }
-  50% {
-    transform: translateY(20px) translateX(-20px) scale(0.9);
-  }
-  75% {
-    transform: translateY(40px) translateX(20px) scale(1.05);
-  }
-}
-
-.particle {
-  position: absolute;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.8) 0%, rgba(37, 99, 235, 0.4) 100%);
-  border-radius: 50%;
-  animation: float-particle 6s ease-in-out infinite;
-  pointer-events: none;
-  filter: blur(4px);
-}
-
-@keyframes float-particle {
-  0% {
-    transform: translateY(0px) translateX(0px) rotate(0deg);
-    opacity: 0;
-  }
-  20% {
-    opacity: 0.6;
-  }
-  80% {
-    opacity: 0.6;
-  }
-  100% {
-    transform: translateY(-120px) translateX(50px) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-.light-wave {
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.05) 100%);
-  animation: pulse-wave 8s ease-in-out infinite;
-  pointer-events: none;
-  filter: blur(30px);
-}
-
-@keyframes pulse-wave {
-  0%, 100% {
-    transform: scale(0.8);
-    opacity: 0.3;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.6;
-  }
-}
-
-/* Capa de blur */
-.blur-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(5px);
-  background: rgba(255, 255, 255, 0.904);
-  z-index: 1;
+  background: linear-gradient(135deg, #f0f9ff 0%, #6b97c4 100%);
 }
 
 /* Contenido principal */
@@ -121,6 +18,7 @@
   z-index: 2;
   min-height: 100vh;
   padding: 2rem;
+  overflow-x: hidden; /* Previene scroll horizontal */
 }
 
 /* Header mejorado */
@@ -133,10 +31,10 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgb(255, 255, 255);
   padding: 0.75rem 1.5rem;
   border-radius: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(10px);
   width: fit-content;
   transition: transform 0.3s ease;
@@ -182,26 +80,28 @@
   min-height: 500px;
   margin: 0 auto;
   align-items: start;
+  overflow-x: hidden; /* Previene scroll horizontal */
 }
 
-/* Carruseles con altura fija para que sean iguales */
+/* Carruseles */
 .carousel-container {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(15px);
   border-radius: 1.5rem;
   padding: 1.5rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   animation: fadeInUp 0.8s ease-out;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   height: 100%;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden; /* Previene scroll horizontal interno */
 }
 
 .carousel-container:hover {
   transform: translateY(-5px);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
 }
 
 .carousel-header {
@@ -212,10 +112,6 @@
   padding-bottom: 0.75rem;
   border-bottom: 2px solid #e2e8f0;
   flex-shrink: 0;
-}
-
-.carousel-icon {
-  font-size: 1.5rem;
 }
 
 .carousel-title {
@@ -231,13 +127,13 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 1.5rem;
-  overflow-y: auto;
-  
+  overflow: hidden; /* Elimina scrollbars internos */
 }
 
 .text-slide {
   text-align: center;
   animation: fadeIn 0.5s ease-out;
+  width: 100%;
 }
 
 .text-slide h3 {
@@ -254,12 +150,13 @@
   font-size: 0.95rem;
 }
 
-/* Imágenes verticales completas */
+/* Imágenes */
 .image-slide {
   width: 100%;
   display: flex;
   justify-content: center;
   animation: fadeIn 0.5s ease-out;
+  overflow: hidden;
 }
 
 .image-frame {
@@ -268,7 +165,7 @@
   max-width: 280px;
   margin: 0 auto;
   border-radius: 1.5rem;
-  overflow: hidden;
+  overflow: hidden; /* Evita que el scale salga del contenedor */
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
 }
@@ -357,11 +254,10 @@
 /* Dots del carrusel */
 .carousel-dots {
   display: flex;
-  align-items: end;
+  align-items: center;
   justify-content: center;
   gap: 0.5rem;
   flex: 1;
-  margin-bottom: 1rem;
 }
 
 .dot {
@@ -384,11 +280,11 @@
   transform: scale(1.2);
 }
 
-/* Sección central mejorada */
+/* Sección central */
 .center-section {
   text-align: center;
   animation: fadeInUp 1s ease-out;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.247);
   backdrop-filter: blur(10px);
   border-radius: 2rem;
   padding: 2rem;
@@ -401,7 +297,7 @@
 .badge {
   display: inline-block;
   background: linear-gradient(135deg, #3b82f6, #1e3a8a);
-  color: white;
+  color: rgb(255, 255, 255);
   padding: 0.5rem 1rem;
   border-radius: 2rem;
   font-size: 0.75rem;
@@ -449,52 +345,7 @@
   line-height: 1.6;
 }
 
-/* Stats mejorados */
-.stats-container {
-  display: flex;
-  justify-content: space-around;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
-.stat {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: white;
-  padding: 0.75rem 1rem;
-  border-radius: 1rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
-}
-
-.stat:hover {
-  transform: translateY(-2px);
-}
-
-.stat-icon {
-  font-size: 1.5rem;
-}
-
-.stat-info {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
-
-.stat-number {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #1e3a8a;
-}
-
-.stat-label {
-  font-size: 0.7rem;
-  color: #64748b;
-}
-
-/* Botones de descarga mejorados */
+/* Botones de descarga */
 .download-buttons {
   display: flex;
   gap: 1rem;
@@ -545,7 +396,8 @@
   gap: 0.25rem;
 }
 
-.version, .coming-soon {
+.version,
+.coming-soon {
   font-size: 0.7rem;
   opacity: 0.9;
   font-weight: normal;
@@ -554,12 +406,12 @@
 .download-btn.android {
   background: linear-gradient(135deg, #2563eb, #1e3a8a);
   color: white;
-  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
 }
 
 .download-btn.android:hover {
   transform: translateY(-2px);
-  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
 }
 
 .download-btn.ios {
@@ -575,28 +427,7 @@
   border-radius: 0.5rem;
 }
 
-/* Trust badge mejorado */
-.trust-badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.8);
-  padding: 0.75rem;
-  border-radius: 2rem;
-  font-size: 0.8rem;
-  color: #1e3a8a;
-  font-weight: 500;
-  margin-bottom: 1.5rem;
-}
-
-.trust-icons {
-  display: flex;
-  gap: 0.25rem;
-  font-size: 1rem;
-}
-
-/* Nuevo botón "Visita nuestra página" */
+/* Botón "Visita nuestra página" */
 .visit-button-container {
   margin-top: 1rem;
   display: flex;
@@ -616,7 +447,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
   position: relative;
   overflow: hidden;
 }
@@ -638,7 +469,7 @@
 
 .visit-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
 }
 
 .visit-btn:active {
@@ -696,25 +527,24 @@
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .carousel-container {
-    height: auto;
     min-height: 450px;
   }
-  
+
   .main-title {
     font-size: 2rem;
   }
-  
+
   .highlight-text {
     font-size: 1.5rem;
   }
-  
+
   .center-section {
     order: -1;
     margin-bottom: 1rem;
   }
-  
+
   .image-frame {
     max-width: 320px;
   }
@@ -724,84 +554,68 @@
   .content {
     padding: 1rem;
   }
-  
+
   .logo-container {
     padding: 0.5rem 1rem;
   }
-  
+
   .logo-image {
     width: 32px;
     height: 32px;
   }
-  
+
   .logo-text {
     font-size: 1.2rem;
   }
-  
+
   .tagline {
     font-size: 0.65rem;
   }
-  
+
   .main-title {
     font-size: 1.5rem;
   }
-  
+
   .highlight-text {
     font-size: 1.2rem;
   }
-  
+
   .subtitle {
     font-size: 0.9rem;
   }
-  
+
   .download-btn {
     padding: 0.75rem 1.25rem;
     font-size: 0.85rem;
   }
-  
+
   .btn-icon {
     width: 20px;
     height: 20px;
   }
-  
-  .stats-container {
-    gap: 0.75rem;
-  }
-  
-  .stat {
-    padding: 0.5rem 0.75rem;
-  }
-  
-  .stat-number {
-    font-size: 1rem;
-  }
-  
-  .stat-label {
-    font-size: 0.65rem;
-  }
-  
+
   .carousel-container {
     min-height: 400px;
     padding: 1rem;
   }
-  
+
   .text-slide h3 {
     font-size: 1.1rem;
   }
-  
+
   .text-slide p {
     font-size: 0.85rem;
   }
-  
+
   .image-frame {
     max-width: 260px;
   }
-  
+
   .app-screenshot {
     min-height: 350px;
     max-height: 420px;
   }
-  
+
   .visit-btn {
     padding: 0.75rem 1.5rem;
     font-size: 0.9rem;
@@ -812,32 +626,23 @@
   .image-frame {
     max-width: 220px;
   }
-  
+
   .app-screenshot {
     min-height: 300px;
     max-height: 380px;
   }
-  
-  .stat-icon {
-    font-size: 1.2rem;
-  }
-  
-  .trust-badge {
-    font-size: 0.7rem;
-    padding: 0.5rem;
-  }
-  
+
   .visit-btn {
     padding: 0.6rem 1.2rem;
     font-size: 0.85rem;
   }
-  
+
   .carousel-container {
     min-height: 380px;
   }
 }
 
-/* Mejoras de accesibilidad */
+/* Preferencias de movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
